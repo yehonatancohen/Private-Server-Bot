@@ -74,12 +74,10 @@ async def invite(ctx,* amount):
         amount = int(amount)
         if amount > 5:
             amount = 5
-    except:
-        amount = int(amount)
-        if amount > 5:
-            amount = 5
         else:
             amount = int(amount)
+    except:
+        amount = 1
     inv_link = await channel.create_invite(max_age=0, max_uses=amount, unique=True)
     await ctx.message.author.send(f"`יצרתי לינק לשרת עם {amount} מקומות לתמיד. תוכל\י לקבל עוד לינק בעוד 5 שעות.\n{inv_link}")
     
