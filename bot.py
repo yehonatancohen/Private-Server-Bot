@@ -75,6 +75,7 @@ async def invite(ctx,* amount):
         if amount > 5:
             amount = 5
     except:
+        amount = int(amount)
         if amount > 5:
             amount = 5
         else:
