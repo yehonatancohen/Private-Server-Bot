@@ -66,4 +66,18 @@ async def setdelay(ctx, seconds: int):
     await ctx.message.delete()
     await ctx.channel.edit(slowmode_delay=seconds)
     await ctx.send(f"שיניתי את הקולדאון ל{seconds} שניות",delete_after=3)
+
+@c.command()
+async def invite(ctx,* amount):
+    channel = get(guild.channels, id=813778440846311475)
+    try:
+        amount = int(amount)
+        if amount > 5:
+            amount = 5
+    except:
+        amount = 1
+    inv_link = await channel.create_invite(max_age=0, max_uses=amount, unique=True)
+    await ctx.message.author.send(f"`יצרתי לינק לשרת עם {amount} מקומות לתמיד. תוכל\י לקבל עוד לינק בעוד 5 שעות.\n{inv_link}")
+    
+
 c.run(token)
