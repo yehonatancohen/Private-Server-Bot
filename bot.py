@@ -18,7 +18,7 @@ c.remove_command('help')
 async def on_ready():
     print(f"{c.user.name}")
     for guild in c.guilds:
-        members = len(guild.members)ש
+        members = len(guild.members)
 
 @c.command()
 @commands.has_permissions(administrator = True)
