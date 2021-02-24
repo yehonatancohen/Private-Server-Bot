@@ -69,7 +69,7 @@ async def setdelay(ctx, seconds: int):
 
 @c.command()
 async def invite(ctx,* amount):
-    channel = discord.utils.get(guild.channels, id=813778440846311475)
+    channel = discord.utils.get(ctx.message.guild.channels, id=813778440846311475)
     try:
         amount = int(amount)
         if amount > 5:
