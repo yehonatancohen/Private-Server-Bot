@@ -69,7 +69,7 @@ async def setdelay(ctx, seconds: int):
 
 @c.command()
 @commands.cooldown(1, 3600, commands.BucketType.user)
-async def invite(ctx, amount = 3):
+async def invite(ctx, amount = 1):
     channel = discord.utils.get(ctx.message.guild.channels, id=813778440846311475)
     if amount > 5:
         amount = 5
