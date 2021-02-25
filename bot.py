@@ -82,3 +82,4 @@ async def on_command_error(self, ctx, error):
         await ctx.channel.send(f'אפשר להזמין רק פעם בשעה')
 
 c.run(token)
+c.add_cog(CommandErrorHandler(bot))
