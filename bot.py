@@ -68,12 +68,13 @@ async def setdelay(ctx, seconds: int):
     await ctx.send(f"שיניתי את הקולדאון ל{seconds} שניות",delete_after=3)
 
 @c.command()
+@commands.cooldown(1, 3600, commands.BucketType.user)
 async def invite(ctx, amount = 3):
     channel = discord.utils.get(ctx.message.guild.channels, id=813778440846311475)
     if amount > 5:
         amount = 5
     inv_link = await channel.create_invite(max_age=0, max_uses=amount, unique=True)
-    await ctx.message.author.send(f"`יצרתי לינק לשרת עם {amount} מקומות לתמיד. תוכל\י לקבל עוד לינק בעוד 5 שעות.\n{inv_link}")
+    await ctx.message.author.send(f"`יצרתי לינק לשרת עם {amount} מקומות לתמיד. תוכל לקבל עוד לינק בעוד שעה.\n{inv_link}")
     
 
 c.run(token)
