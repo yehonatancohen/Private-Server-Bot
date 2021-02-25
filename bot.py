@@ -78,7 +78,7 @@ async def invite(ctx, amount = 3):
     
 @commands.Cog.listener()
 async def on_command_error(self, ctx, error):
-    if isinstance(error, commands.cooldown):
+    if isinstance(error, commands.CommandOnCooldown):
         await ctx.channel.send(f'אפשר להזמין רק פעם בשעה')
 
 c.run(token)
