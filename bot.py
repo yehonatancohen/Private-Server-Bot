@@ -76,5 +76,9 @@ async def invite(ctx, amount = 3):
     inv_link = await channel.create_invite(max_age=0, max_uses=amount, unique=True)
     await ctx.message.author.send(f"`יצרתי לינק לשרת עם {amount} מקומות לתמיד. תוכל לקבל עוד לינק בעוד שעה.\n{inv_link}")
     
+@commands.Cog.listener()
+async def on_command_error(self, ctx, error):
+    if isinstance(error, commands.cooldown):
+        await ctx.channel.send(f'אפשר להזמין רק פעם בשעה')
 
 c.run(token)
