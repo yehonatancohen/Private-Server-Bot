@@ -76,9 +76,13 @@ async def invite(ctx, amount = 3):
     inv_link = await channel.create_invite(max_age=0, max_uses=amount, unique=True)
     await ctx.message.author.send(f"`יצרתי לינק לשרת עם {amount} מקומות לתמיד. תוכל לקבל עוד לינק בעוד שעה.\n{inv_link}")
     
-@invite.error
-async def invite_handler(self, ctx, error):
+@c.event
+async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandOnCooldown):
         await ctx.channel.send(f'אפשר להזמין רק פעם בשעה')
+    elif isinstance(error, commands.MissingPermissions):
+        await ctx.channel.send(f'אין לך את הגישות לעשות זאת')
+    else:
+        await ctx.channel.send(f'אירעה שגיאה')
 
 c.run(token)
